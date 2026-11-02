@@ -51,12 +51,14 @@ class BusSearch:
     def fill_cities(self, city_from, city_to):
         """Заполнение городов отправления и прибытия"""
         self.search_bus_menu_cities_from.press_sequentially(city_from, delay=100)
-        self.first_city_from.wait_for(state="visible")
+        expect(self.first_city_from).to_contain_text(city_from)
         self.first_city_from.click()
+        expect(self.search_bus_menu_cities_from).to_have_value(city_from)
         
         self.search_bus_menu_cities_to.press_sequentially(city_to, delay=100)
-        self.first_city_to.wait_for(state="visible")
+        expect(self.first_city_to).to_contain_text(city_to)
         self.first_city_to.click()
+        expect(self.search_bus_menu_cities_to).to_have_value(city_to)
 
     def select_departure_date(self, days_ahead: int = 5):
         """Выбирает дату через N дней от сегодня"""
@@ -119,5 +121,3 @@ class BusSearch:
     def close_confirmation_modal(self):
         """Закрытие модального окна"""
         self.button_close_modal.click()
-
-    
