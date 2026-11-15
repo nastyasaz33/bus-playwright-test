@@ -11,11 +11,13 @@ load_dotenv()
 
 @pytest.fixture
 def user_email():
+    """Переменная окружения: валидный логин"""
     return os.environ["BUS_TEST_EMAIL"]
 
 
 @pytest.fixture
 def user_password():
+    """Переменная окружения: валидный пароль"""
     return os.environ["BUS_TEST_PASSWORD"]
 
 @pytest.fixture
